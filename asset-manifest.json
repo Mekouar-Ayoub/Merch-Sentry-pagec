@@ -1,18 +1,26 @@
 {
   "files": {
-    "main.css": "/Merch-Sentry-pagec/static/css/main.9be2607b.css",
-    "main.js": "/Merch-Sentry-pagec/static/js/main.59f47dbf.js",
-    "static/media/swoosh-nike-logo-nike-logo-png-png": "/Merch-Sentry-pagec/static/media/swoosh-nike-logo-nike-logo-png-5ae4c95bb3ca9d158becf5ba9aa8b9e8.8bf2bf2e85c6dae16bde.png",
-    "static/media/cap-hat-adidas-cap-png-hd-png": "/Merch-Sentry-pagec/static/media/cap-hat-adidas-cap-png-hd-6dba9558659261a0e0db21f9fcd22894.9b266a50564602f0617c.png",
-    "static/media/nike-air-max-sneakers-shoe-air-jordan-men-shoes-png": "/Merch-Sentry-pagec/static/media/nike-air-max-sneakers-shoe-air-jordan-men-shoes-45af4ec7176bad26683ab00a9e5623ca.ae4b1c3e8c95d46b36d5.png",
-    "static/media/Blue_and_Black_Modern_Digital_Agency_Logo-removebg-preview.png": "/Merch-Sentry-pagec/static/media/Blue_and_Black_Modern_Digital_Agency_Logo-removebg-preview.cfa29e1be179786dc6f7.png",
-    "static/media/5bbc5e00c4c36-png": "/Merch-Sentry-pagec/static/media/5bbc5e00c4c36-fcc258155d3a899ae16bf71910ea56be.9441aa24b52868e4cea7.png",
+    "main.css": "/Merch-Sentry-pagec/static/css/main.0b03761c.css",
+    "main.js": "/Merch-Sentry-pagec/static/js/main.85cbb6e8.js",
+    "static/media/backgroundConnexion.png": "/Merch-Sentry-pagec/static/media/backgroundConnexion.e24921124015d69d0c33.png",
+    "static/media/Barclient.png": "/Merch-Sentry-pagec/static/media/Barclient.30e561d9cec5c8b10909.png",
+    "static/media/3.png": "/Merch-Sentry-pagec/static/media/3.d27fe76324f6114a14e2.png",
+    "static/media/e2.png": "/Merch-Sentry-pagec/static/media/e2.5c5ae667e9c390372706.png",
+    "static/media/4.png": "/Merch-Sentry-pagec/static/media/4.16c0fa3ae0b743d543fc.png",
+    "static/media/e3.png": "/Merch-Sentry-pagec/static/media/e3.b3446944e2178e9c8b38.png",
+    "static/media/e1.png": "/Merch-Sentry-pagec/static/media/e1.33da0cd314a932789101.png",
+    "static/media/11.png": "/Merch-Sentry-pagec/static/media/11.06979fe868586b21ad91.png",
+    "static/media/s1.png": "/Merch-Sentry-pagec/static/media/s1.8277497520a853cc3f0a.png",
+    "static/media/111.png": "/Merch-Sentry-pagec/static/media/111.cdd7c838390ed8c1819f.png",
+    "static/media/1.png": "/Merch-Sentry-pagec/static/media/1.48c70c5a1610c2e05571.png",
+    "static/media/2.png": "/Merch-Sentry-pagec/static/media/2.9331fb22ec231f9bbfdc.png",
+    "static/media/computer-icons-user-profile-male-user-png": "/Merch-Sentry-pagec/static/media/computer-icons-user-profile-male-user-8d62411d7e891230b6d16cf2cad69184.aa4703fc05cfaca87ab9.png",
     "index.html": "/Merch-Sentry-pagec/index.html",
-    "main.9be2607b.css.map": "/Merch-Sentry-pagec/static/css/main.9be2607b.css.map",
-    "main.59f47dbf.js.map": "/Merch-Sentry-pagec/static/js/main.59f47dbf.js.map"
+    "main.0b03761c.css.map": "/Merch-Sentry-pagec/static/css/main.0b03761c.css.map",
+    "main.85cbb6e8.js.map": "/Merch-Sentry-pagec/static/js/main.85cbb6e8.js.map"
   },
   "entrypoints": [
-    "static/css/main.9be2607b.css",
-    "static/js/main.59f47dbf.js"
+    "static/css/main.0b03761c.css",
+    "static/js/main.85cbb6e8.js"
   ]
 }
