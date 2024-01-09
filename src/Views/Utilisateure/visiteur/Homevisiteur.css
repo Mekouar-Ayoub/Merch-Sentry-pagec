@@ -6,7 +6,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    padding: 20px 0px 0px 20px;
+    padding: 10px 0px 0px 10px;
     background-image: url(./Barclient.png);
 }
 .filterInVisiteur{
@@ -14,31 +14,4 @@
     height: 100px;
     justify-content: right;
     
-}
-svg{
-    stroke-width: 1px;
-    stroke: #D4B996; 
-    width: 125px;
-    flex-shrink: 0; 
-    margin-left: 83px;
-    margin-top: -33px;
-}
-.itemvisiteur{
-    border:1px solid black;
-    width: 310px;
-
-}
-.boxvisiteur{
-    border-radius: 0px 0px 10.417px 10.417px;
-    background: #007ACC;
-    padding: 5px; 
-}
-.boxvisiteur p{
-    color: #FFF;
-    font-family: Montserrat;
-    font-size: 13px;
-    text-align: center;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal; 
 }
