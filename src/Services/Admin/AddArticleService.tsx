@@ -78,12 +78,19 @@ export default function AddArticleService(){
         throw new Error("Function not implemented.");
       } } setprix_ht_3_magasin={function (value: SetStateAction<string>): void {
         throw new Error("Function not implemented.");
-      } } setprix_ttc_magasin={function (value: SetStateAction<string>): void {
+      } } setprix_ht_1_magasin={function (value: SetStateAction<string>): void {
         throw new Error("Function not implemented.");
       } } setquantité={function (value: SetStateAction<string>): void {
         throw new Error("Function not implemented.");
+      } } setNomClient={function (value: SetStateAction<string>): void {
+        throw new Error("Function not implemented.");
+      } } setAdresse={function (value: SetStateAction<string>): void {
+        throw new Error("Function not implemented.");
+      } } setTotalCommandeHT={function (value: SetStateAction<string>): void {
+        throw new Error("Function not implemented.");
+      } } setTotalRemise={function (value: SetStateAction<string>): void {
+        throw new Error("Function not implemented.");
       } }
-
   />
   </>
 }

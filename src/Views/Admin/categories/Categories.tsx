@@ -80,14 +80,27 @@ const {product , messageErros} = state
         }
       }}
       >
-        {product.length > 0 ? 
+                {
+product.length > 0 ? (
   product.filter((pro) => {
-    return search.toLowerCase() === "" || 
-    pro.Designation.toLowerCase().includes(search.toLowerCase());
+    const searchTerm = search.toLowerCase();
+    const designation = pro.Designation.toLowerCase();
+    const refArticle = pro.RefArticle.toString().toLowerCase();
+    const sub = pro.LibelleSubstitut?.toString().toLowerCase(); 
+    return searchTerm === "" || 
+      designation.includes(searchTerm) || 
+      refArticle.startsWith(searchTerm) ||
+      sub?.startsWith(searchTerm);
   }).length > 0 ? (
     product.filter((pro) => {
-      return search.toLowerCase() === "" || 
-      pro.Designation.toLowerCase().includes(search.toLowerCase());
+      const searchTerm = search.toLowerCase();
+      const designation = pro.Designation.toLowerCase();
+      const refArticle = pro.RefArticle.toString().toLowerCase();
+      const sub = pro.LibelleSubstitut?.toString().toLowerCase(); 
+      return searchTerm === "" || 
+        designation.includes(searchTerm) || 
+        refArticle.startsWith(searchTerm)||
+        sub?.startsWith(searchTerm);
     }).map((pro) => (
           <SwiperSlide>
       <Link className="product-link" to={`articles/${pro.IdArticle}`}>
@@ -107,14 +120,15 @@ const {product , messageErros} = state
         </Link>
 
         </SwiperSlide>
-            ))
-            ) : (
+             ))
+             ) : (
              <div className="no-produit">
              <i className="bi bi-emoji-neutral"></i><br />
              <p>Malheureusement, on n‘a pas ce produit pour l’instant.</p><br />
-           </div>     )
-            :
-            (<div className="no-produit"><i className="bi bi-info-lg"></i> Accune product</div>)
+           </div>        
+           )
+  ) : (
+  <div className="no-produit"><i className="bi bi-info-lg"></i> Accune product</div>)
           }
        
         

@@ -1,11 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../../Admin/IMG/s1.png"
 import "./SidBarClient.css"
+import { MagasinContext } from "../../../Context/MagasinContext";
 export default function SidBarClient(){
     const location = useLocation();
     const [activeItem, setActiveItem] = useState<string | null>(null);
-  
+    const magasinContext = useContext(MagasinContext);
+  const MagasinId = localStorage.getItem('ClientId');
+  const MagasinName = localStorage.getItem('ClientName');
+    const idClient = MagasinId || magasinContext.id?.id;
+    const NameClient =  MagasinName || magasinContext.id?.NomMagasin;
     useEffect(() => {
       const path = location.pathname;
   
@@ -29,8 +34,8 @@ export default function SidBarClient(){
     <img className="profilCommercial" src={""}  />	
     <br />	
     <ul className="side-menu top mb-5">
-      <li className={activeItem === "/clients/:id" ? "active" : "" }>
-          <Link className="active" to="/clients/:id">
+      <li className={activeItem === `/clients/${idClient}` ? "active" : "" }>
+          <Link className="active" to={`/clients/${idClient}`}>
         <a href="#">
           <i className="bi bi-menu-button-wide-fill" />
         </a>
@@ -75,7 +80,7 @@ export default function SidBarClient(){
   
       <ul className="logout-commercial">
         <li className={activeItem === "/" ? "active" : "" }> 
-        <Link to="">
+        <Link to={`/logout`}>
   
           <a href="#" className="logout">
             <i className="bi bi-box-arrow-left" />

@@ -51,11 +51,25 @@ import AddClient from "./Services/Magasin/AddClient";
 import MessageAddClient from "./Views/Admin/message/MessagAddClient";
 import AddArticle from "./Services/Magasin/AddArticle";
 import MessageAddArticleInMagasin from "./Views/Admin/message/MessageAddArticleInMagasin";
+import Logout from "./Services/Magasin/Logout";
+import AfficheArticleByIdVisiteure from "./Services/Visiteure/AfficheArticleByIdVisiteure";
+import CommandeMagasin from "./Views/Magasin/commande/CommandeMagasin";
+import CommandeMagasinServiec from "./Services/Magasin/CommandeMagasinService";
+import SettingAdmin from "./Views/Admin/Setting/SettingAdmin";
+import AssistanceAdmin from "./Views/Admin/Setting/AssistanceAdmin";
+import MessageUpdateArticle from "./Views/Admin/message/MessageUpdateArticle";
+import Sidebare from "./Views/Admin/Sidbare/Sidebare";
+import SettingMagasin from "./Views/Magasin/Setting/SettingMagasin";
+import { useState } from "react";
+import AllProduit from "./Views/Admin/HomeAdmin/AllProduit";
+import AllProduitMagasin from "./Views/Magasin/HomeMagasin/AllProduitMagasin";
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
+      <>
 
       
     <BrowserRouter>
@@ -74,11 +88,17 @@ root.render(
     <Route path='/magasin/add' index element={<CreateMagasin/>}/>
     <Route path='/magasin/:id/edit' index element={<EditeMagasin/>}/>
     <Route path='/historiques' index element={<Historique/>}/>
+    <Route path='/paramétres' index element={<SettingAdmin/>}/>
+    <Route path='/assistance' index element={<AssistanceAdmin/>}/>
+    <Route path='/articles' index element={<AllProduit/>}/>
 
+     
     {/* -------------------------------- routes magasin -----------------------------*/}
+    
     <Route path='/magasins/:id' index element={<HomeMagasin/>}/>
-    <Route path='/magasins/:id/articles/:id' index element={<AfficheArticleById/>}/>
-    <Route path='/magasins/:id/articles' index element={<ProduitMagasin/>}/>
+    <Route path='/magasins/:id/articles/:id' index element={<AfficheArticleById />}/>
+    <Route path='/magasins/:id/articles/voire' index element={<ProduitMagasin/>}/>
+    <Route path='/magasins/:id/articles' index element={<AllProduitMagasin/>}/>
     <Route path='/magasins/:id/article/:id/edit' index element={<ChangeProduitMagasin/>}/>
     <Route path='/magasins/:id/panier' index element={<PanierMagasin/>}/>
     <Route path='/magasins/:id/commercials' index element={<Commercial/>}/>
@@ -93,6 +113,7 @@ root.render(
     <Route path='/magasins/:id/panier/precedent' index element={<PanierPrecedent/>}/>
     <Route path='/message' index element={<MessageSuccess/>}/>
     <Route path='/message/article' index element={<MessageAddArticleInMagasin/>}/>
+    <Route path='/message/article/edit' index element={<MessageUpdateArticle/>}/>
     <Route path='/message/commercial' index element={<MessageAddCommercial/>}/>
     <Route path='/message/client' index element={<MessageAddClient/>}/>
     <Route path='/magasins/:id/historiques' index element={<HistoriqueMagasin/>}/>
@@ -100,6 +121,12 @@ root.render(
     <Route path='/magasins/:id/historiques/encour/id' index element={<Encour/>}/>
     <Route path='/magasins/:id/historiques/id/echanger' index element={<Echanger/>}/>
     <Route path='/magasins/:id/historiques/id/rembourser' index element={<Remboureser/>}/>
+    <Route path='/magasins/:id/paramétres' index element={<SettingMagasin/>}/>
+    <Route path='/logout' index element={<Logout/>}/>
+    <Route path='/magasins/:id/commande' index element={<CommandeMagasinServiec/>}/>
+
+
+
 
     {/* -------------------------------- routes Commercial -----------------------------*/}
 
@@ -109,7 +136,7 @@ root.render(
     {/* -------------------------------- routes Visiteur -----------------------------*/}
 
     <Route path='/visiteurs' index element={<HomeVisiteur/>}/>
-    <Route path='/visiteurs/articles' index element={<AfficheProduitVisiteur/>}/>
+    <Route path='/visiteurs/articles/:id' index element={<AfficheArticleByIdVisiteure/>}/>
     <Route path='/avis/clients' element={<AvisClient/>}/>
 
     {/* -------------------------------- routes Client -----------------------------*/}
@@ -123,4 +150,5 @@ root.render(
 
     </Routes>
     </BrowserRouter>
+    </>
 );

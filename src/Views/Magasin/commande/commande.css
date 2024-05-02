@@ -1,0 +1,157 @@
+.title-commande{
+    text-align: center;
+}
+.button-up{
+    margin-top: 3%;
+    text-align: center;
+    
+}
+.inputqtecommande{
+    width: 30%;
+    text-align: center;
+    margin-left: 5%;
+}
+.icontableT{
+    color: rgb(208, 26, 26);
+    cursor: pointer;
+
+}
+.icontableE{
+    color: rgb(2, 72, 178);
+    cursor: pointer;
+
+}
+.resultref{
+    cursor: pointer;
+    margin-top: 30%;
+    transition: 0.1s;
+
+}
+.resultsref{
+    background-color: #f9f9f9;
+    border-radius: 7px;
+    padding: 2%;
+    width: 50%;
+}
+.resultref:hover{
+    transition: 0.1s;
+    color: rgb(16, 16, 16);
+    cursor: pointer;
+}
+.iconinputqtecommande{
+    color: #249722;
+    font-size: 1.3rem;
+    margin-left: 45%;
+    display: flex;
+    margin-top: -12%;
+    cursor: pointer;
+}
+.button-up .historique{
+    text-decoration: none;
+    margin-left: 3%;
+    background-color: #7FA87E;
+    padding: 0.9% 2%;
+    color: aliceblue;
+    font-family: Montserrat;
+    border-radius: 10px;
+}
+.button-up .commandes{
+    text-decoration: none;
+    background-color: #7FA87E;
+    padding: 0.9% 1.9%;
+    color: aliceblue;
+    font-family: Montserrat;
+    border-radius: 10px;
+}
+.information-client-commande{
+    font-size: 1.2rem;
+    font-family: Montserrat;
+    margin-bottom: 3%;
+}
+.r-article-commande{
+    font-size: 1.2rem;
+    font-family: Montserrat;
+    margin-bottom: 3%;
+    margin-top: 4%;
+}
+.list-article-commande{
+    font-size: 1.2rem;
+    font-family: Montserrat;
+    margin-bottom: 3%;
+    margin-top: 4%;
+}
+.recherche-article-commande{
+    float: right;
+    display: flex;
+    text-decoration: none;
+    background-color: #7FA87E;
+    padding: 0.9% 1.9%;
+    color: aliceblue;
+    font-family: Montserrat;
+    border-radius: 10px;
+}
+.valide-commande-article{
+    float: right;
+    display: flex;
+    text-decoration: none;
+    background-color: #7FA87E;
+    padding: 0.9% 1.9%;
+    color: aliceblue;
+    font-family: Montserrat;
+    border-radius: 10px;
+    margin-bottom: 4%;
+}
+.Information-article-commande{
+    margin-top: 4%;
+    font-size: 1.2rem;
+    font-family: Montserrat;
+    margin-bottom: 3%;
+}
+
+
+
+/* test bon de commande  css  */
+/* .container-test{
+    margin-left:10%;
+    margin-bottom: 10%;
+}
+.container-test h1{
+    margin-left:7%;
+    color: rgb(50, 50, 106);
+    
+}
+.desc-pagec{
+    font-family: Montserrat;
+    margin-top: -0.7%;
+    background-color: rgb(56, 56, 89);
+    border-radius: 7px;
+    color: aliceblue;
+    padding: 0.3%;
+    padding-left: 1%;
+    width: 29%;
+    opacity: 0.8;
+}
+.container-test h2{
+    text-align: center;
+}
+.info-magas{
+    float: right;
+    margin-top: -5%;
+    margin-right: 7%;
+}
+.info-magas h6{
+    font-size: 0.7rem;
+
+}
+.info-client {
+    float: right;
+    border: 1px solid rgb(93, 93, 93);
+    border-radius: 7px;
+    width: 35%;
+    margin-right: 3%;
+    font-family: Montserrat;
+    padding: 1%;
+}
+.info-client h4{
+    font-size: 1.1rem;
+} */

@@ -13,9 +13,10 @@ import ImageProduit2 from "../../Admin/IMG/e1.png"
 import ImageProduit3 from "../../Admin/IMG/3.png"
 import ImageProduit4 from "../../Admin/IMG/e3.png"
 import {Swiper , SwiperSlide} from"swiper/react"
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ArticleInfo } from "../../../Modeles/ArticleModel";
 import AfficheProductsService from "../../../Services/Admin/AfficheProductsService";
+import { MagasinContext } from "../../../Context/MagasinContext";
 export interface ProductType{
 
   product : ArticleInfo[],
@@ -23,6 +24,11 @@ export interface ProductType{
 }
 
 export default function HomeClient(){
+  const magasinContext = useContext(MagasinContext);
+  const MagasinId = localStorage.getItem('ClientId');
+  const MagasinName = localStorage.getItem('ClientName');
+    const idClient = MagasinId || magasinContext.id?.id;
+    const NameClient =  MagasinName || magasinContext.id?.NomMagasin;
   const [search , setSearche] = useState("");
   const [state , setState] = useState<ProductType>({
     product:[] as ArticleInfo[],
@@ -193,7 +199,7 @@ return<>
                     </div>
 
             </div>
-            <h5 className="card-name">Nour</h5>
+            <h5 className="card-name">{NameClient}</h5>
         </div>
         <div className="progresse">
           <div className="progress">

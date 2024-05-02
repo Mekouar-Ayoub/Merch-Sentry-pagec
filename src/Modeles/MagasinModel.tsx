@@ -13,7 +13,7 @@ export interface MagasinInfo {
     ImagePP?:string,	
     ImageEP_Facture?:string,	
     ImagePP_Facture?:string,	
-    messageError?:string
+    messageError?:string,
 
 
     

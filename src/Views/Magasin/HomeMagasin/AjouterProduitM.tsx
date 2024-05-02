@@ -14,7 +14,7 @@ const AjouterProduitM:React.FC<ArticleInfo> = ({
   setprix_ht_2_magasin,
   setquantité,
   setprix_ht_3_magasin,
-  setprix_ttc_magasin,
+  setprix_ht_1_magasin,
   handleSubmit,
   setUnite,
   messageError,
@@ -92,7 +92,7 @@ const AjouterProduitM:React.FC<ArticleInfo> = ({
   <div className="col">
   <span className="">Prix 1 </span>
 
-    <input onChange={(e)=>setPrixVenteArticleTTC(e.target.value)}  type="text" className="form-control" defaultValue="0" />
+    <input onChange={(e)=>setprix_ht_1_magasin(e.target.value)}  type="text" className="form-control" defaultValue="0" />
   </div>
   <div className="col">
   <span className="">Prix 2 </span>
@@ -107,7 +107,7 @@ const AjouterProduitM:React.FC<ArticleInfo> = ({
   <div className="col">
   <span className="">Prix Ttc </span>
 
-    <input onChange={(e)=>setprix_ttc_magasin(e.target.value)}  type="text" className="form-control" defaultValue="0" />
+    <input onChange={(e)=>setPrixVenteArticleTTC(e.target.value)}  type="text" className="form-control" defaultValue="0" />
   </div>
 
   <div className="col colmag">

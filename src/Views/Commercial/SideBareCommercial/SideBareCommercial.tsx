@@ -2,11 +2,16 @@ import { Link, useLocation } from "react-router-dom"
 import"./SideBare.css"
 import profil from "../../Admin/IMG/Commercial.png"
 import logo from "../../Admin/IMG/cropped-favicon-mylittlegarage-32x32 1.png"
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { MagasinContext } from "../../../Context/MagasinContext";
 export default function SideBareCommercial(){
   const location = useLocation();
   const [activeItem, setActiveItem] = useState<string | null>(null);
-
+  const magasinContext = useContext(MagasinContext);
+  const MagasinId = localStorage.getItem('CommercialId');
+  const MagasinName = localStorage.getItem('CommercialName');
+    const id = MagasinId || magasinContext.id?.id;
+    const nameMagasin =  MagasinName || magasinContext.id?.nom;
   useEffect(() => {
     const path = location.pathname;
 
@@ -30,15 +35,15 @@ export default function SideBareCommercial(){
   <img className="profilCommercial" src={profil}  />	
   <br />	
   <ul className="side-menu top mb-5">
-    <li className={activeItem === "/commercials/:id" ? "active" : "" }>
-        <Link className="active" to="/commercials/:id">
+    <li className={activeItem === `/commercials/${id}` ? "active" : "" }>
+        <Link className="active" to={`/commercials/${id}`}>
       <a href="#">
         <i className="bi bi-menu-button-wide-fill" />
       </a>
       </Link>
     </li >
-    <li className={activeItem === "/commercials/:id/articles" ? "active" : "" }>
-      <Link to="/commercials/:id/articles">
+    <li className={activeItem === `/commercials/${id}/articles` ? "active" : "" }>
+      <Link to={`/commercials/${id}/articles`}>
 
       <a href="#">
       <i className="bi bi-clock"></i>

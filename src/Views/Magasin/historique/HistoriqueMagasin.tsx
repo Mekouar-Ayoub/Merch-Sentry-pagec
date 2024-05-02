@@ -1,12 +1,39 @@
 import { Link } from "react-router-dom";
 import "./historique.css"
 import SideBareMagasin from "../SideBareMagasin/SideBareMagasin";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MagasinContext } from "../../../Context/MagasinContext";
+import { Commande } from "../../../Modeles/Commande";
+import HistoriqueMagasinService from "../../../Services/Magasin/HistoriqueMagasinService";
+export interface commandeType{
+
+  product : Commande[],
+  messageErros:string,
+}
 export default function HistoriqueMagasin(){
   const magasinContext = useContext(MagasinContext);
-    const MagasinId = localStorage.getItem('MagasinId');
-      const id = MagasinId || magasinContext.id?.id;
+  const MagasinId = localStorage.getItem('MagasinId');
+    const id = MagasinId || magasinContext.id?.id;
+    const [state , setState] = useState<commandeType>({
+      product:[] as Commande[],
+      messageErros : "accune commande",
+  
+  })
+  const [stateMagasin , setStateMagasin] = useState<commandeType>({
+    
+    product:[] as Commande[],
+    messageErros : "accune produit",
+  
+  })
+  useEffect(()=>{
+      setState({...state })
+        HistoriqueMagasinService().getCommande()
+          .then((res)=>setState({...state  , product:res.data})
+  
+          )
+          .catch(msg=>setState({...state  , product:msg.messageErros}))
+  },[]);
+  const {product , messageErros} = state
     return<>
     <SideBareMagasin/>
     <div className="container mt-5">
@@ -23,38 +50,28 @@ export default function HistoriqueMagasin(){
         <th scope="col" className="ncom">N de commande</th>
         <th scope="col">Date</th>
         <th scope="col">Montant</th>
-        <th scope="col">Unité</th>
+        <th scope="col">details</th>
         <th scope="col">Statut</th>
 
 
       </tr>
     </thead>
     <tbody>
+      {product.length>0?product.map(pro=>(
       <tr>
         <td>
       <Link className="columnTable" to={`/magasins/${id}/historiques/id`}>
-        6484011
+        {pro.IdCommande}
       </Link>
       </td>
-        <td>10/10/2023</td>
-        <td>1000 MAD</td>
-        <td>5</td>
-        <td>En cours</td>
+        <td>{pro.DateCommande}</td>
+        <td>{pro.TotalCommandeHT} MAD</td>
+        <td>{pro.Statut}</td>
+        <td>voir detail</td>
       </tr>
-      <tr>
-        <td>2234789</td>
-        <td>13/10/2023</td>
-        <td>4000 MAD</td>
-        <td>12</td>
-        <td>Validé</td>
-      </tr>
-      <tr>
-        <td>3756420</td>
-        <td>18/10/2023</td>
-        <td>547 MAD</td>
-        <td>3</td>
-        <td>Annulé</td>
-      </tr>
+      )):<h5 className="mt-5 text-center">Pas de commande </h5>}
+
+      
     </tbody>
   </table>
 </div>

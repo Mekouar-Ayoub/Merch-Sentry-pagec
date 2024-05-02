@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, SetStateAction, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AjouterProduitM from "../../Views/Magasin/HomeMagasin/AjouterProduitM";
 
@@ -9,7 +9,7 @@ export default function AddArticle(){
     const [PrixVenteArticleTTC, setPrixVenteArticleTTC] = useState<string>("");
     const [prix_ht_2_magasin, setprix_ht_2_magasin] = useState<string>("");
     const [prix_ht_3_magasin, setprix_ht_3_magasin] = useState<string>("");
-    const [prix_ttc_magasin, setprix_ttc_magasin] = useState<string>("");
+    const [prix_ht_1_magasin, setprix_ht_1_magasin] = useState<string>("");
     const [quantité, setquantité] = useState<string>("");
     const [Description, setDescription] = useState<string>("");
     const [image, setImage] = useState<File | null>(null);
@@ -35,7 +35,7 @@ export default function AddArticle(){
     formData.append("PrixVenteArticleTTC", PrixVenteArticleTTC);
     formData.append("prix_ht_2_magasin", prix_ht_2_magasin);
     formData.append("prix_ht_3_magasin", prix_ht_3_magasin);
-    formData.append("prix_ttc_magasin", prix_ttc_magasin);
+    formData.append("prix_ht_1_magasin", prix_ht_1_magasin);
     formData.append("Description", Description);
     formData.append("stock", stock);
     formData.append("Unite", Unite);
@@ -54,6 +54,7 @@ export default function AddArticle(){
           }, 2000);
       });
     } catch (error: AxiosError | any) {
+      
         setMessageError('Veuillez saisir toutes les informations')
         const timeoutId = setTimeout(() => {
         setMessageError('')
@@ -64,31 +65,38 @@ export default function AddArticle(){
     }
     return<>
     <AjouterProduitM
-      setDesignation={setDesignation}
-      Designation={Designation}
-      setDescription={setDescription}
-      Description={Description}
-      setPrixVenteArticleTTC={setPrixVenteArticleTTC}
-      PrixVenteArticleTTC={PrixVenteArticleTTC}
-      setImage={setImage}
-      image={image}
-      setQuantité={setquantité}
-      setstock={setstock}
-      stock={stock}
-      setRefARticle={setRefArticle}
-      RefArticle={RefArticle}
-      setUnite={setUnite}
-      Unite={Unite}
-      prix_ht_2_magasin={prix_ht_2_magasin}
-      prix_ht_3_magasin={prix_ht_3_magasin}
-      prix_ttc_magasin={prix_ttc_magasin}
-      handleSubmit={handleSubmit}
-      handleImage={handleImage}
-      messageError={messageError}
-      setprix_ht_2_magasin={setprix_ht_2_magasin}
-      setprix_ht_3_magasin={setprix_ht_3_magasin}
-      setprix_ttc_magasin={setprix_ttc_magasin}
-      setquantité={setquantité}
-    />
+        setDesignation={setDesignation}
+        Designation={Designation}
+        setDescription={setDescription}
+        Description={Description}
+        setPrixVenteArticleTTC={setPrixVenteArticleTTC}
+        PrixVenteArticleTTC={PrixVenteArticleTTC}
+        setImage={setImage}
+        image={image}
+        setQuantité={setquantité}
+        setstock={setstock}
+        stock={stock}
+        setRefARticle={setRefArticle}
+        RefArticle={RefArticle}
+        setUnite={setUnite}
+        Unite={Unite}
+        prix_ht_2_magasin={prix_ht_2_magasin}
+        prix_ht_3_magasin={prix_ht_3_magasin}
+        prix_ht_1_magasin={prix_ht_1_magasin}
+        handleSubmit={handleSubmit}
+        handleImage={handleImage}
+        messageError={messageError}
+        setprix_ht_2_magasin={setprix_ht_2_magasin}
+        setprix_ht_3_magasin={setprix_ht_3_magasin}
+        setprix_ht_1_magasin={setprix_ht_1_magasin}
+        setquantité={setquantité} setNomClient={function (value: SetStateAction<string>): void {
+          throw new Error("Function not implemented.");
+        } } setAdresse={function (value: SetStateAction<string>): void {
+          throw new Error("Function not implemented.");
+        } } setTotalCommandeHT={function (value: SetStateAction<string>): void {
+          throw new Error("Function not implemented.");
+        } } setTotalRemise={function (value: SetStateAction<string>): void {
+          throw new Error("Function not implemented.");
+        } }    />
     </>
 }

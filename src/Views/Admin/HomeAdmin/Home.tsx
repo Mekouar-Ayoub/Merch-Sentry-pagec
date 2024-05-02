@@ -41,14 +41,6 @@ useEffect(()=>{
         )
         .catch(msg=>setState({...state  , product:msg.messageErros}))
 },[]);
-useEffect(()=>{
-  setState({...state })
-      AfficheMagasinsService().getMagasin()
-      .then((res)=>setStateMagasin({...stateMagasin  , product:res.data})
-
-      )
-      .catch(msg=>setStateMagasin({...stateMagasin  , product:msg.messageErros}))
-},[]);
 const {product , messageErros} = state
 
     return <>
@@ -67,7 +59,7 @@ const {product , messageErros} = state
   {/* ----------------------------------- PRODUIT SLIDE ------------------------------------ */}
 
   <div className="container-fluid ProductSlide">
-    <a className="right-align" href="#">Voir Plus <i className="bi bi-arrow-right-short" /></a>
+    <Link to={"/articles"}><a className="right-align" href="/articles">Voir Plus <i className="bi bi-arrow-right-short" /></a></Link>
     <Swiper
       
       freeMode={true}

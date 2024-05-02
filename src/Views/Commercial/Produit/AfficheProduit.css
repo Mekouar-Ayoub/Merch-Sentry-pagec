@@ -5,18 +5,18 @@
     margin-left: 100px;
 }
 .formcommercial{
-    width: 1220px;
+    width: 100%;
 }
 .bar1 p{
-    margin-left: 15px;
+    font-size: 0.95rem;
     margin-top: 20px;
     color: #333;
-font-family: Montserrat;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-padding-right: 5px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-right: 2px;
+    width: 60%;
 }
 .bar2 ul li{
     color: #000;
@@ -26,15 +26,28 @@ padding-right: 5px;
     font-weight: 300;
     line-height: normal; 
 }
+.bar2 p{
+    font-family: Montserrat;
+    font-size: 1rem;
+    margin-left: 4%;
+    margin-bottom: -2%;
+}
+.bar2 span{
+    font-family: Montserrat;
+    font-size: 0.9rem;
+    margin-left: 4%;
+    font-weight: 550;
+}
 .bar1 img{
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.05); 
     border-radius: 7.671px;
     border: 0.5px solid #f2dabb;
     background: #FFF; 
     padding: 5px 5px 10px 5px;
     margin-top: 7px;
+    margin-right: 7%;
 }
 .row .card{
     height: 220px;
@@ -49,7 +62,7 @@ padding-right: 5px;
 }
 .slidImages{
     height: 150px;
-    width: 260px;
+    width: 100%;
 	margin-left: 18px;
     position: relative;
 	padding: 10px 2px 150px 2px;
@@ -65,6 +78,57 @@ padding-right: 5px;
     box-sizing: border-box;
     text-align: center;
 
+}
+.bar3-admin{
+    height: 45px;
+	background: #007ACC;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 0 20px 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.bar3-magasin{
+    height: 45px;
+    background-color: #7fa87e;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 0 20px 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+.bar3-admin .price p{
+    color: white;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 1rem;
+
+}
+.bar3-magasin .price p{
+    color: white;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-size: 1rem;
+
+}
+.gotoshow{
+    text-decoration: none;
+}
+.bar3-admin span{
+    color: white;
+    font-size: 0.7rem;
+    font-family: Montserrat;
+    font-weight: 600;
+}
+.bar3-magasin span{
+    color: white;
+    font-size: 0.7rem;
+    font-family: Montserrat;
+    font-weight: 600;
 }
 .bar2{
     margin-top: -47px;
@@ -102,5 +166,5 @@ padding-right: 5px;
 }
 .boxcomercial{
     border-radius: 10px 10px 25px 25px;
-    width: 270px;
+    width: 100%;
 }

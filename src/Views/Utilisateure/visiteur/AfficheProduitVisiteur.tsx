@@ -4,10 +4,23 @@ import logoBrand from "../../Admin/IMG/Logo_Decathlon_RVB 1.png"
 import panier from "./cart.fill.badge.plus(1).png"
 
 import { Link } from "react-router-dom"
+import { ArticleInfo } from "../../../Modeles/ArticleModel"
 
 
-export default function AfficheProduitVisiteur(){
-    return <>
+const AfficheProduitVisiteur:React.FC<ArticleInfo> = ({
+    IdArticle,
+    Designation,
+    PrixVenteArticleTTC,
+    Description,
+    image,
+    stock,
+    RefArticle,
+    LibelleSubstitut,
+    QantityMagasin,
+
+}) => {
+console.log(Designation);
+    return( <>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"></link>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <div className="title-app">MERCHSENTRY<br />
@@ -19,7 +32,7 @@ export default function AfficheProduitVisiteur(){
     <div className="bar-roteur">
         <Link className="icon-roteur" to="/visiteurs"><i className="bi bi-arrow-left"></i>
 </Link>
-        <h3>CASSETTE 8 VITESSES 12X32</h3>
+        <h3>{Designation}</h3>
     </div>
     <div className="info-products">
         <div className="image-product">
@@ -27,7 +40,7 @@ export default function AfficheProduitVisiteur(){
         <img src={imgProduit} alt="" />
         </div>
         <div className="info-product">
-            <h3 className="price">239 MAD</h3>
+            <h3 className="price">{PrixVenteArticleTTC} MAD</h3>
             <p>Quantité</p>
             <input type="number" min={1}/>
             <p className="location-content"><svg className="icon-location" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,8 +77,10 @@ export default function AfficheProduitVisiteur(){
         Conçu pour les vélos équipés avec corps de cassette et chaîne de 8 vitesses.</p>
     </div>
     <div className="ref">
-        <h4>REF : <span>8328485</span></h4>
+        <h4>REF : <span>{RefArticle}</span></h4>
     </div>
 </div>
     </>
+    )
 }
+export default AfficheProduitVisiteur;

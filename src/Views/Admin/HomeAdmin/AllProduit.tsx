@@ -1,22 +1,26 @@
 import { Link } from "react-router-dom";
-import SideBareCommercial from "../SideBareCommercial/SideBareCommercial";
-import "./AfficheProduit.css"
+import "../../Commercial/Produit/AfficheProduit.css"
 import IMGProduit from"../../Admin/IMG/1.png"
 import { ArticleInfo } from "../../../Modeles/ArticleModel";
 import { useEffect, useState } from "react";
 import AfficheProductsService from "../../../Services/Admin/AfficheProductsService";
+import Sidebare from "../Sidbare/Sidebare";
 export interface ProductType{
 
     product : ArticleInfo[],
     messageErros:string,
   }
-  export default function AfficheProduitCommercial(){
+  export default function AllProduit(){
+    
     const [search , setSearche] = useState("");
     const [state , setState] = useState<ProductType>({
       product:[] as ArticleInfo[],
       messageErros : "accune produit",
   
   })
+  const handleGoBack = () => {
+    window.history.back();
+};
   const [stateMagasin , setStateMagasin] = useState<ProductType>({
     product:[] as ArticleInfo[],
     messageErros : "accune produit",
@@ -36,10 +40,13 @@ export interface ProductType{
 const {product , messageErros} = state
 
     return <>
-        <SideBareCommercial/>
+        <Sidebare/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <div className="allproductCommercial">
-        <div className="form formcommercial mt-5 ">
+            <br />
+        <i onClick={handleGoBack} className="bi bi-arrow-left-short arrow"></i>
+
+        <div className="form formcommercial mt-3">
           <i className="fa fa-search" />
           <input type="text" onChange={handelSearche}  className="form-control form-input" placeholder="Recherch un produit , ref .." />
           <span className="left-pan"><i className="bi bi-sliders"></i></span>
@@ -67,24 +74,29 @@ product.length > 0 ? (
         refArticle.startsWith(searchTerm)||
         sub?.startsWith(searchTerm);
     }).map((pro) => (
-            <div className="col-lg-4 col-md-3 col-12">
+        <div className="col-lg-4 col-md-3 col-12">
+                <Link className="gotoshow" to={`/articles/${pro.IdArticle}`}>
                 <div className="box boxcomercial">
           <div className="slidImages bar1">
           <img src={IMGProduit} alt="" />
           <p>{pro.Designation}</p>
           </div>
           <div className="bar2">
-                        <ul>
+          <p>LibelleSubstitut : <span>{pro.LibelleSubstitut?pro.LibelleSubstitut:"N/A"}</span></p>
+          <p>Reference : <span>{pro.RefArticle?pro.RefArticle:"N/A"}</span></p>
+
+                        {/* <ul>
                             <li><b>. </b><span className="vent">+50</span> Ventes</li>
                             <li><b>. </b><span className="annule">10</span> Annulés</li>
                             <li><b>. </b><span className="remborse">0</span> Remboursés</li>
 
-                        </ul>
+                        </ul> */}
                     </div>
-          <div className="bar3">
-          <Link className="buttonfleche" to=""><button><i className="bi bi-arrow-up-right"></i></button></Link>
+          <div className="bar3-admin">
+          <div className="price"><p>{pro.PrixVenteArticleTTC} MAD <span>/ P.U</span></p></div>
           </div>
         </div>
+                </Link>
                 </div>
                ))
                ) : (

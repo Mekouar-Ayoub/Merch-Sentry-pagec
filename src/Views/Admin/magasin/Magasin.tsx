@@ -41,13 +41,13 @@ return <>
           <input type="text" className="form-control form-input" placeholder="Recherch un magasin, ..." />
           <span className="left-pan"><i className="bi bi-sliders"></i></span>
           <Link to="/magasin/add">
-          <button className="btnAjoutee">Créer un magasin</button></Link>
+          <button className="btnAjoutee creteMagasin">Créer un magasin</button></Link>
         </div>
       </div>
     </div>
   </div>
 </div>
-{/* {product.length>0? product.map((pro:any)=>(
+{product.length>0? product.map((pro:any)=>(
     
 <div className="container magasin">
   <div className="magasinInfo">
@@ -70,12 +70,12 @@ return <>
     </div>
   </div>
     <p className="descmag">Depot : ---- {pro.DepotName} -----</p>
-     <Link to="/magasin/:id/edit"><a className="voirPlus" href=""> plus de details  <i className="bi bi-arrow-right-short" /></a></Link>
+     <Link to={`/magasin/${pro.IdMagasin }/edit`}><a className="voirPlus" href=""> plus de details  <i className="bi bi-arrow-right-short" /></a></Link>
 </div>
 </div>
 )):""
-} */}
-<div className="container magasin">
+}
+{/* <div className="container magasin">
   <div className="magasinInfo">
 
   <h5>My little garage</h5>
@@ -126,6 +126,6 @@ return <>
      eius quasi quas ducimus sint est magni quibusdam exercitationem.</p>
     <Link to="/magasin/edit"><a className="voirPlus" href=""> plus de details  <i className="bi bi-arrow-right-short" /></a></Link>
 </div>
-</div>
+</div> */}
     </>
 }

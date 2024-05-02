@@ -38,7 +38,7 @@ export default function Sidebare() {
           </a>
           <br />
           <ul className="side-menu top">
-            <li className={activeItem === "/home" || activeItem && /^\/articles\/\d+$/.test(activeItem) ||activeItem && /^\/articles\/\d+\/edit$/.test(activeItem)? "active" : "" }>
+            <li className={activeItem === "/home" || activeItem === "/articles" || activeItem && /^\/articles\/\d+$/.test(activeItem) ||activeItem && /^\/articles\/\d+\/edit$/.test(activeItem)? "active" : "" }>
               <Link className="active" to="/home">
                 <a href="#">
                   <i className="bi bi-menu-button-wide-fill" />
@@ -52,7 +52,7 @@ export default function Sidebare() {
                 </a>
               </Link>
             </li>
-            <li className={activeItem === "/magasin" ? "active" : "" || activeItem === "/magasin/add" ? "active"  : "" || activeItem === "/magasin/edit" || activeItem === "/magasin/:id/edit" ? "active"  : ""}>
+            <li className={activeItem === "/magasin" ? "active" : "" || activeItem === "/magasin/add" ? "active"  : "" || activeItem && activeItem.startsWith("/magasin/") && activeItem.endsWith("/edit") ? "active"  : ""}>
               <Link to="/magasin">
                 <a href="#">
                   <i className="bi bi-shop" />
@@ -80,9 +80,9 @@ export default function Sidebare() {
                       </a>
                 </Link>
               </li>
-              <li className={activeItem === "/settings" ? "active" : ""}>
+              <li className={activeItem === "/Paramétres" ? "active" : ""}>
 
-                <Link to="">
+                <Link to="/Paramétres">
                   <a href="#">
                     <i className="bi bi-gear" />
                   </a>
@@ -101,6 +101,10 @@ export default function Sidebare() {
           </div>
         </section>
       </body>
+      <div className="container">
+        <Link className=" icon-assi" to={"/assistance"}><i className="bi bi-headset"></i></Link>
+      
+      </div>
     </>
   );
 }

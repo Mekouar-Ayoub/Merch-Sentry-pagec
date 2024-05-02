@@ -74,6 +74,12 @@
     margin-left: -8%;
     width: 150%;
 }
+.form-categorie{
+    margin-left: 0.1%;
+}
+.form-categorie .btnAjoutee{
+    font-size: 0.75rem;
+}
 .Box-info-product .price{
     font-family: Montserrat;
     color: rgb(255, 255, 255);

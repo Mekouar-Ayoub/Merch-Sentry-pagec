@@ -29,6 +29,7 @@ export function HomeMagasin(){
   const [search , setSearche] = useState("");
   const magasinContext = useContext(MagasinContext);
   const MagasinId = localStorage.getItem('MagasinId');
+  const panier = localStorage.getItem('paniermagasin');
     const id = MagasinId || magasinContext.id?.id;
   const [state , setState] = useState<ProductType>({
     product:[] as ArticleInfo[],
@@ -57,10 +58,14 @@ const {product , messageErros} = state
         </div>
         </Link>
         <div className="container">
+        <div className="b-p-u-c">
 
+<Link to={`/magasins/${id}/commande`}className="p-u-c">Passez une commande</Link>
+</div>
         <h5 className="mt-5"><b>Bienvenue ! </b> vous pouvez gérer votre stock en toute simplicité</h5>
         </div>
   <div className="container mt-5">
+
     <div className="row height">
       <div className="col-md-6">
         <div className="form ">
@@ -68,13 +73,17 @@ const {product , messageErros} = state
           <input onChange={handelSearche} type="text" className="form-control form-input" placeholder="Recherch un produit , ref .." />
           <span className="left-pan"><i className="bi bi-sliders"></i></span>
         </div>
+        
       </div>
+      
     </div>
+    
   </div>
 
   <div className="container-fluid" id="ProductSlide">
+
     <h5 className="container">Equipements</h5>
-    <a className="right-align" href="#">Voir Plus <i className="bi bi-arrow-right-short" /></a>
+    <Link to={`/magasins/${id}/articles`}><a className="right-align" href="#">Voir Plus <i className="bi bi-arrow-right-short" /></a></Link>
     <Swiper
       
       freeMode={true}
@@ -102,9 +111,6 @@ product.length > 0 ? (
     const designation = pro.Designation.toLowerCase();
     const refArticle = pro.RefArticle.toString().toLowerCase();
     const sub = pro.LibelleSubstitut?.toString().toLowerCase(); 
-    console.log(sub)// Convert RefArticle to string and lowercase
-
-    // Check if either the Designation or RefArticle matches the search term
     return searchTerm === "" || 
       designation.includes(searchTerm) || 
       refArticle.startsWith(searchTerm) ||
@@ -115,9 +121,6 @@ product.length > 0 ? (
       const designation = pro.Designation.toLowerCase();
       const refArticle = pro.RefArticle.toString().toLowerCase();
       const sub = pro.LibelleSubstitut?.toString().toLowerCase(); 
-      ;  // Convert RefArticle to string and lowercase
-
-      // Check if either the Designation or RefArticle matches the search term
       return searchTerm === "" || 
         designation.includes(searchTerm) || 
         refArticle.startsWith(searchTerm)||
@@ -146,11 +149,10 @@ product.length > 0 ? (
       <div className="no-produit">
         <i className="bi bi-emoji-neutral"></i><br />
         <p>Malheureusement, on n‘a pas ce produit pour l’instant.</p><br />
-        <Link to={"/magasins/:id/demande"} className="botton-remplir"><button>Remplir une demande</button></Link>
+        <Link to={"https://api.whatsapp.com/send?phone=212661718081"} target="_blank" className="botton-remplir"><button><i className="bi bi-whatsapp"></i>Contactez-nous</button></Link>
       </div>
     )
   ) : (
-    // Handle case when product list is empty
     <div className="no-produit">
       <i className="bi bi-info-lg"></i> Aucun produit
     </div>
@@ -189,7 +191,7 @@ product.length > 0 ? (
         {product.length>0? product.map(pro=>(
 
              <SwiperSlide>
-             <Link className="parantbox" to="/magasins/:id/articles/id">
+          <Link className="hh" to={`/magasins/${id}/articles/${pro.IdArticle}`}>
 
 <div className="boxSponsore">
       <div className="slideImgSponsorem">

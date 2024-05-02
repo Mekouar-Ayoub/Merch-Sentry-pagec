@@ -37,12 +37,12 @@ const Connexion:React.FC<Utilisateure> = ({
     </div>
           <label htmlFor="" className="mb-3">Pseudo</label>
           <div className="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-            <input onChange={(e) => setCompteEmail(e.target.value)} value={CompteEmail} className="input100" type="text" name="CompteEmail" />
+            <input onChange={(e) => setCompteEmail(e.target.value)}  className="input100" type="text" name="CompteEmail" />
             <span className="focus-input100" />
           </div>
           <label htmlFor="" className="mb-3">Mot de passe</label>
           <div className="wrap-input100 validate-input" data-validate="Password is required">
-            <input onChange={(e) => setPassword(e.target.value)} value={Password}  className="input100" type="password" name="Password" />
+            <input onChange={(e) => setPassword(e.target.value)}   className="input100" type="password" name="Password" />
             <span className="focus-input100" />
           </div>
           <div className="container-login100-form-btn">

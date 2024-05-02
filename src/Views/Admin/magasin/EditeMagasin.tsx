@@ -6,8 +6,36 @@ import E3 from "../IMG/e2.png"
 import E4 from "../IMG/e3.png"
 import Sponsor1 from "../IMG/s3.png"
 import {Swiper , SwiperSlide} from"swiper/react"
+import AfficheProductsService from "../../../Services/Admin/AfficheProductsService";
+import { useEffect, useState } from "react";
+import { ArticleInfo } from "../../../Modeles/ArticleModel";
+export interface ProductType{
 
+  product : ArticleInfo[],
+  messageErros:string,
+}
 export default function EditeMagasin(){
+  
+  const [state , setState] = useState<ProductType>({
+    product:[] as ArticleInfo[],
+    messageErros : "accune produit",
+
+})
+const [stateMagasin , setStateMagasin] = useState<ProductType>({
+  product:[] as ArticleInfo[],
+  messageErros : "accune produit",
+
+})
+useEffect(()=>{
+    setState({...state })
+        AfficheProductsService().getProduct()
+        .then((res)=>setState({...state  , product:res.data})
+
+        )
+        .catch(msg=>setState({...state  , product:msg.messageErros}))
+},[]);
+const {product , messageErros} = state
+
     return<>
     <Sidebare/>
     <div className="container mt-5">
@@ -25,21 +53,21 @@ export default function EditeMagasin(){
     <div className="row mb-3">
   <div className="col">
         <span>Nom complet de proprietaire</span>
-    <input type="text" className="form-control" id="nom" placeholder="nike" aria-label="First name" />
+    <input type="text" className="form-control" id="nom" aria-label="First name" />
   </div>
   
   <div className="col-7" id="inputTele">
     <div className="inputTele">
 
   <span>Numéro de télephone</span>
-    <input type="text" className="form-control" id="tele" placeholder="+212 6 21 47 12 99"  />
+    <input type="text" className="form-control" id="tele"  />
     </div>
 
   </div>
 </div>
 <div className="col-12">
 <span>Localisation</span>
-<input type="text" className="form-control" id="inputAddress" value="" placeholder="Casablanca Anoual" />
+<input type="text" className="form-control" id="inputAddress" defaultValue={"Casablanca"} />
 
 </div>
 
@@ -76,6 +104,8 @@ export default function EditeMagasin(){
         }
       }}
       >
+                {product.length>0? product.map(pro=>(
+
         <SwiperSlide>
 
         <div className="box">
@@ -86,108 +116,14 @@ export default function EditeMagasin(){
           </div>
           <div className="detailBoxEdite">
             <div className="type">
-              <p>I-FLUX 200</p>
+              <p>{pro.Designation}</p>
             </div>
-            <p className="price">15 120 MAD <span className="pu">/ P.U</span> </p>
+            <p className="price">{pro.PrixVenteArticleTTC} MAD <span className="pu">/ P.U</span> </p>
           </div>
         </div>
         </SwiperSlide>
-        <SwiperSlide>
-
-        <div className="box">
-          <div className="slidImage">
-            <img src={E2} alt="" />
-            <div className="overlay">
-            </div>
-          </div>
-          <div className="detailBoxEdite">
-            <div className="type">
-              <p>DPF FLUSH</p>
-            </div>
-            <p className="price">7 720 MAD <span className="pu">/ P.U</span> </p>
-          </div>
-        </div>
-        </SwiperSlide>
-        <SwiperSlide>
-
-        <div className="box">
-          <div className="slidImage">
-            <img src={E3} alt="" />
-            <div className="overlay">
-            </div>
-          </div>
-          <div className="detailBoxEdite">
-            <div className="type">
-              <p>AT-FLUX 3</p>
-            </div>
-            <p className="price">75 038 MAD <span className="pu">/ P.U</span> </p>
-          </div>
-        </div>
-        </SwiperSlide>
-        <SwiperSlide>
-
-        <div className="box">
-          <div className="slidImage">
-            <img src={E4} alt="" />
-            <div className="overlay">
-            </div>
-          </div>
-          <div className="detailBoxEdite">
-            <div className="type">
-              <p>4-WAY Flux Evo</p>
-            </div>
-            <p className="price">4 092 MAD <span className="pu">/ P.U</span> </p>
-          </div>
-        </div>
-        </SwiperSlide>
-        <SwiperSlide>
-
-        <div className="box">
-          <div className="slidImage">
-            <img src={E4} alt="" />
-            <div className="overlay">
-            </div>
-          </div>
-          <div className="detailBoxEdite">
-            <div className="type">
-              <p>I-FLUX 200</p>
-            </div>
-            <p className="price">100 MAD <span className="pu">/ P.U</span> </p>
-          </div> 
-        </div>
-        </SwiperSlide>
-        <SwiperSlide>
-
-        <div className="box">
-          <div className="slidImage">
-            <img src={E4} alt="" />
-            <div className="overlay">
-            </div>
-          </div>
-          <div className="detailBoxEdite">
-            <div className="type">
-              <p>I-FLUX 200</p>
-            </div>
-            <p className="price">100 MAD <span className="pu">/ P.U</span> </p>
-          </div>
-        </div>
-        </SwiperSlide>
-        <SwiperSlide>
-
-        <div className="box">
-          <div className="slidImage">
-            <img src={E4} alt="" />
-            <div className="overlay">
-            </div>
-          </div>
-          <div className="detailBoxEdite">
-            <div className="type">
-              <p>I-FLUX 200</p>
-            </div>
-            <p className="price">100 MAD <span className="pu">/ P.U</span> </p>
-          </div>
-        </div>
-        </SwiperSlide>
+                )):""
+              }
         </Swiper>
 </div>
 </div>

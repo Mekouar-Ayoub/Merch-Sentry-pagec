@@ -39,15 +39,46 @@ export default function LoginService(){
         magasinContext.setNameMagasin({
           nameMagasin:savedNameMagasin || NameMagasin,
         });
+        // Connexion as Commercial 
       } else if (response.data.message === "commercial") {
-        navigate(`/commercials/:id`);
-      }else if (response.data === "superAdmin") {
-        navigate(`/home`);
+        const IdCommercial = response.data.account.id;
+        const NameCommercial = response.data.account.nom;
+
+        navigate(`/commercials/`+IdCommercial);
+        const savedId = localStorage.getItem('CommercialId');
+        localStorage.setItem('CommercialId', savedId || IdCommercial);
+
+        const savedNameCommercial = localStorage.getItem('CommercialName');
+        localStorage.setItem('CommercialName', savedNameCommercial || NameCommercial);
+        magasinContext.setId({
+          id:savedId || IdCommercial,
+        });
+        magasinContext.setNameMagasin({
+          nameComercial:savedNameCommercial || NameCommercial,
+        });
+
+        // Connexion as Client 
+      }else if (response.data.message === "Client") {
+        // console.log(response.data);
+        const IdClient = response.data.account.IdClient;
+        const NameClient = response.data.account.NomClient;
+        navigate(`/clients/`+IdClient);
+        const savedId = localStorage.getItem('ClientId');
+        localStorage.setItem('ClientId', savedId || IdClient);
+
+        const savedNameClient = localStorage.getItem('ClientName');
+        localStorage.setItem('ClientName', savedNameClient || NameClient);
+        magasinContext.setId({
+          id:savedId || IdClient,
+        });
+        magasinContext.setNameMagasin({
+          nameClient:savedNameClient || NameClient,
+        });
       } 
-      else if (response.data === "dev") {
-        console.log("dev");
-      } else if (response.data === "comptoire") {
-        console.log("comptoire");
+
+      else if (response.data === "superAdmin") {
+        navigate(`/home`);
+
       } else {
         setMessage(true);
         const timeoutId = setTimeout(() => {

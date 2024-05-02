@@ -1,7 +1,35 @@
 import { Link } from "react-router-dom";
 import Sidebare from "../Sidbare/Sidebare";
 import "./historique.css"
+import { useEffect, useState } from "react";
+import HistoriqueCommande from "../../../Services/Admin/HistoriqueCommande";
+import { Commande } from "../../../Modeles/Commande";
+export interface commandeType{
+
+  product : Commande[],
+  messageErros:string,
+}
 export default function Historique(){
+  const [state , setState] = useState<commandeType>({
+    product:[] as Commande[],
+    messageErros : "accune commande",
+
+})
+const [stateMagasin , setStateMagasin] = useState<commandeType>({
+  
+  product:[] as Commande[],
+  messageErros : "accune produit",
+
+})
+useEffect(()=>{
+    setState({...state })
+        HistoriqueCommande().getCommande()
+        .then((res)=>setState({...state  , product:res.data})
+
+        )
+        .catch(msg=>setState({...state  , product:msg.messageErros}))
+},[]);
+const {product , messageErros} = state
     return<>
     <Sidebare/>
     <div className="container mt-5">
@@ -18,7 +46,7 @@ export default function Historique(){
         <th scope="col" className="ncom">N de commande</th>
         <th scope="col">Date</th>
         <th scope="col">Montant</th>
-        <th scope="col">Unité</th>
+        <th scope="col">details</th>
         <th scope="col">Statut</th>
         <th scope="col">Demandez de</th>
 
@@ -26,30 +54,17 @@ export default function Historique(){
       </tr>
     </thead>
     <tbody>
+    {product.length>0? product.map(pro=>(
       <tr>
-        <td>6484011</td>
-        <td>10/10/2023</td>
-        <td>1000 MAD</td>
-        <td>5</td>
-        <td>En cours</td>
+        <td>{pro.IdCommande}</td>
+        <td>{pro.DateCommande}</td>
+        <td>{pro.TotalCommandeHT} MAD</td>
+        <td><Link to={""}>Voir detail</Link></td>
+        <td>{pro.Statut}</td>
         <td><a href="" className="remborser">Se remborser</a><br /><a href="" className="echanger">Echanger</a></td>
       </tr>
-      <tr>
-        <td>2234789</td>
-        <td>13/10/2023</td>
-        <td>4000 MAD</td>
-        <td>12</td>
-        <td>Validé</td>
-        <td><a href="" className="remborser">Se remborser</a><br /><a href="" className="echanger">Echanger</a></td>
-      </tr>
-      <tr>
-        <td>3756420</td>
-        <td>18/10/2023</td>
-        <td>547 MAD</td>
-        <td>3</td>
-        <td>Annulé</td>
-        <td><a href="" className="remborser">Se remborser</a><br /><a href="" className="echanger">Echanger</a></td>
-      </tr>
+      )):<h5 className="mt-5 text-center">Pas de commande </h5>
+    }
     </tbody>
   </table>
 </div>

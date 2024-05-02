@@ -4,6 +4,9 @@ import Chart from "react-apexcharts";
 import { Link } from 'react-router-dom';
 import "./afficheCommercial.css"
 export default function AfficheCommercial() {
+  const handleGoBack = () => {
+    window.history.back();
+};
   const [state, setstate] = useState({
     options: {
       chart: {
@@ -34,7 +37,7 @@ export default function AfficheCommercial() {
       <div className="container">
       <div className="barRetour mt-5">
       <span className="iconRetour">
-        <Link to="/magasins/:id/commercials"><i className="bi bi-arrow-left-short"></i></Link>
+        <Link to="" onClick={handleGoBack}><i className="bi bi-arrow-left-short"></i></Link>
         
       </span>
       <div className="marque">

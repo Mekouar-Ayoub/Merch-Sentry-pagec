@@ -1,0 +1,129 @@
+.arrow{
+    cursor: pointer;
+    border: 1px solid rgb(222, 222, 222);
+    font-size: 1.8rem;
+    background-color: #ffffff;
+    padding: 0% 0.2%;
+    border-radius: 20px;
+}
+.card-assistance{
+    font-family: Montserrat;
+    margin-left: 4%;
+    padding: 5% 2%;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 0px 0px 20px 20px;
+    margin-bottom: 10%;
+}
+.bar-up-assistance{
+    margin-left: 4%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #333333;
+    padding: 4%;
+    color: #FFFFFF;
+    font-family: Montserrat;
+    border-radius: 20px 10px 0px 0px ;
+
+}
+.bar-up-assistance h3{
+    font-size: 1.4rem;
+}
+.bar-up-assistance span{
+    font-size: 0.92rem;
+    color: #d5d5d5;
+    line-height: 22px;
+    font-family: Montserrat;
+
+}
+.card-assistance h5{
+    color: #777777;
+}
+.card-assistance p{
+    font-family: Montserrat;
+    line-height: 15.85px;
+    margin-top: -2%;
+}
+.reponde-question{
+    float: right;
+    margin-right: 10%;
+}
+.reponde-question button{
+    color: #464646;
+    text-align: center;
+    padding: 2% 10%;
+    margin-bottom: 5%;
+    border: 1px solid #0072bd;
+    border-radius: 7px;
+    height: 100%;
+    transition: 0.1s;
+
+}
+.reponde-question button:hover{
+    transition: 0.2s;
+    transform: scale(1.02);
+    
+}
+
+.avatar {
+    position: relative;
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    border-radius: 100%;
+    background-color: #f5f6f7;
+    color: #8b95a5;
+    text-transform: uppercase;
+}
+
+
+.media-chat .media-body p {
+    position: relative;
+    padding: 6px 8px;
+    margin: 4px 0;
+    background-color: #f5f6f7;
+    border-radius: 3px;
+}
+
+.publisher {
+    position: relative;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 1% 3%;
+    margin-top: 20%;
+    background-color: #f9fafb;
+    border: 1px solid rgb(222, 222, 222);
+    border-radius: 20px;
+}
+.bi-send ,.bi-mic-fill{
+    cursor: pointer;
+    color: #969696;
+    font-size: 1.2rem;
+}
+.publisher>*:first-child {
+    margin-left: 0;
+}
+
+.publisher>* {
+    margin: 0 2%;
+}
+
+.publisher-input {
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border: none;
+    outline: none !important;
+    background-color: transparent;
+}
+
+button, input, optgroup, select, textarea {
+    font-family: Roboto,sans-serif;
+    font-weight: 300;
+}
+
+
+
+

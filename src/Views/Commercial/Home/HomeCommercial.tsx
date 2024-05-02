@@ -28,8 +28,8 @@ const handelSearche=(e:any)=>{
 }
 useEffect(()=>{
     setState({...state })
-        AfficheProductsService().getProduct()
-        .then((res)=>setState({...state  , product:res.data})
+      AfficheProductsService().getProduct()
+    .then((res)=>setState({...state  , product:res.data})
         )
         .catch(msg=>setState({...state  , product:msg.messageErros}))
 },[]);
@@ -75,17 +75,29 @@ const {product , messageErros} = state
         }
       }}
       >
-{product.length > 0 ? 
+                {
+product.length > 0 ? (
   product.filter((pro) => {
-    return search.toLowerCase() === "" || 
-    pro.Designation.toLowerCase().includes(search.toLowerCase());
+    const searchTerm = search.toLowerCase();
+    const designation = pro.Designation.toLowerCase();
+    const refArticle = pro.RefArticle.toString().toLowerCase();
+    const sub = pro.LibelleSubstitut?.toString().toLowerCase(); 
+    return searchTerm === "" || 
+      designation.includes(searchTerm) || 
+      refArticle.startsWith(searchTerm) ||
+      sub?.startsWith(searchTerm);
   }).length > 0 ? (
     product.filter((pro) => {
-      return search.toLowerCase() === "" || 
-      pro.Designation.toLowerCase().includes(search.toLowerCase());
+      const searchTerm = search.toLowerCase();
+      const designation = pro.Designation.toLowerCase();
+      const refArticle = pro.RefArticle.toString().toLowerCase();
+      const sub = pro.LibelleSubstitut?.toString().toLowerCase(); 
+      return searchTerm === "" || 
+        designation.includes(searchTerm) || 
+        refArticle.startsWith(searchTerm)||
+        sub?.startsWith(searchTerm);
     }).map((pro) => (
         <SwiperSlide>
-
         <div className="box">
           <div className="slidImage">
             <img src={PRODUIT1} alt="" />
@@ -102,17 +114,16 @@ const {product , messageErros} = state
           </div>
         </div>
         </SwiperSlide>
-           ))
-           ) : (
+                ))
+                ) : (
             <div className="no-produit">
               <i className="bi bi-emoji-neutral"></i><br />
               <p>Malheureusement, on n‘a pas ce produit pour l’instant.</p><br />
-            </div>
-            )
-           :
-           <div className="no-produit"><i className="bi bi-info-lg"></i>Accune product</div>
-          }
-        </Swiper>
+            </div>)
+  ) : (
+          <div className="no-produit"><i className="bi bi-info-lg"></i>Accune product</div>
+          )}
+          </Swiper>
 
   </div>
   <div className="mt-3 container-fluid" id="ProductSlide">

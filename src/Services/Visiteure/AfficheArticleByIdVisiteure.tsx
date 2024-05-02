@@ -1,9 +1,9 @@
 import axios , {AxiosError} from "axios";
 import { useParams } from "react-router-dom";
-import AfficheProduit from "../../Views/Admin/HomeAdmin/AfficheProduit";
 import { SetStateAction, useEffect, useState } from "react";
+import AfficheProduitVisiteur from "../../Views/Utilisateure/visiteur/AfficheProduitVisiteur";
 
-export default function AfficheProduitService(){
+export default function AfficheArticleByIdVisiteure(){
   const [Designation,setDesignation] = useState<string>("");
   const [IdArticle,setIdArticle] = useState<number>(0);
   const [PrixVenteArticleTTC,setPrixVenteArticleTTC] = useState<string>("");
@@ -13,11 +13,6 @@ export default function AfficheProduitService(){
   const [stock,setstock] = useState<string>("");
   const [LibelleSubstitut,setLibelle] = useState<string>("")
   const [QantityMagasin,setQantityMagasin] = useState<string>("")
-  const [prix_ht_1_magasin,setPrixHt1] = useState<string>("")
-  const [prix_ht_2_magasin,setPrixHt2] = useState<string>("")
-  const [prix_ht_3_magasin,setPrixHt3] = useState<string>("")
-  const [prix_ttc,setPrixTtc] = useState<string>("")
-
 
   
     const {id}= useParams();    
@@ -28,7 +23,6 @@ export default function AfficheProduitService(){
         try {
           await axios.get(process.env.REACT_APP_PHP_APP_URL + '/articles/' + id)
           .then(({data})=>{
-            setIdArticle(data.article.IdArticle);
             setDescription(data.article.Description);
             setDesignation(data.article.Designation);
             setPrixVenteArticleTTC(data.article.PrixVenteArticleTTC);
@@ -36,11 +30,6 @@ export default function AfficheProduitService(){
             setRefArticle(data.article.RefArticle);
             setstock(data.article.stock)
             setQantityMagasin(data.article.quantity_Zenpart);
-            setPrixHt1(data.article.prixht1_Zenpart);
-            setPrixHt2(data.article.prixht2_Zenpart);
-            setPrixHt3(data.article.prixht3_Zenpart);
-            setPrixTtc(data.article.prixttc_Zenpart);
-
 
 
             
@@ -57,7 +46,7 @@ export default function AfficheProduitService(){
           
       }
     return <>
-        <AfficheProduit
+        <AfficheProduitVisiteur
         IdArticle={IdArticle}
         Designation={Designation}
         PrixVenteArticleTTC={PrixVenteArticleTTC}
@@ -67,10 +56,6 @@ export default function AfficheProduitService(){
         Description={Description}
         stock={stock}
         QantityMagasin={QantityMagasin}
-        prix_ht_1_magasin={prix_ht_1_magasin}
-        prix_ht_2_magasin={prix_ht_2_magasin}
-        prix_ht_3_magasin={prix_ht_3_magasin}
-        prix_ttc={prix_ttc}
         Unite={""} setDesignation={function (value: SetStateAction<string>): void {
           throw new Error("Function not implemented.");
         } } setPrixVenteArticleTTC={function (value: SetStateAction<string>): void {

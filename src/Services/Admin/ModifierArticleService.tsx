@@ -1,17 +1,20 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import ModifierProduit from "../../Views/Admin/HomeAdmin/ModifierProduit";
-import { SetStateAction, useEffect, useState } from "react";
+import { FormEvent, SetStateAction, useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 
 export default function ModifierArticleService(){
+  const navigate = useNavigate();
     const [Designation,setDesignation] = useState<string>("");
     const [IdArticle,setIdArticle] = useState<number>();
 //   const [IdArticle,setIdArticle] = useState<number>(0);
   const [PrixVenteArticleTTC,setPrixVenteArticleTTC] = useState<string>("");
-  const [RefArticle,setRefArticle] = useState<string>("");
-  const [image,setimage] = useState<any>("");
+  const [RefArticle,setRefARticle] = useState<string>("");
+  const [image,setImage] = useState<any>("");
   const [Description,setDescription] = useState<string>("");
   const [stock,setstock] = useState<string>("");
+  const [messageError,setMessageError] = useState<string>("");
+
   const [LibelleSubstitut,setLibelle] = useState<string>("")
 
 
@@ -20,36 +23,37 @@ export default function ModifierArticleService(){
     useEffect(()=>{
         fetchProduct();
     },[])
+    const handleSubmitUpdate=async(e: FormEvent)=>{
+      e.preventDefault();
+      const formData = new FormData();
+    formData.append("_method", 'post');
+    formData.append("Designation", Designation);
+    formData.append("PrixVenteArticleTTC", PrixVenteArticleTTC);
+    formData.append("Description", Description);
+    formData.append("stock", stock);
+    if (image) {
+      formData.append("image", image);
+    }
+    await axios.post(`http://127.0.0.1:8000/api/articles/${id}/edit` , formData)
+      .then(({data})=>{
+          navigate("/message/article/edit")
+          const timeoutId = setTimeout(() => {
+            navigate("/home");
+          }, 2000);
+      })
+  
+        
+    }
     const fetchProduct=async()=>{
         try {
           await axios.get(process.env.REACT_APP_PHP_APP_URL + '/articles/' + id)
           .then(({data})=>{
-            data.forEach((items:any) => {
-              if (Array.isArray(items)) {
-                items.forEach((item) => {
-                  if(item.LibelleSubstitut===""){
-                    // console.log('fj')
-                    setLibelle("N/A");
-                  }else{
-                    setLibelle(item.LibelleSubstitut);
-                    
-                  }
-                });
-              }else{
-              setDesignation(items.Designation);
-              setIdArticle(items.IdArticle);
-              setDescription(items.Description);
-              setimage(items.image);
-              setPrixVenteArticleTTC(items.PrixVenteArticleTTC);
-              setRefArticle(items.RefArticle);
-              setstock(items.stock);
-                
-              }
-
+                setDesignation(data.article.Designation);
+                setPrixVenteArticleTTC(data.article.PrixVenteArticleTTC);
+                setstock(data.article.stock);
+                setDescription(data.article.Description);
           });
-            
-
-        })} catch (error: AxiosError | any) {
+        } catch (error: AxiosError | any) {
           if (error.response?.status === 442) {
           console.log("good data");
 
@@ -60,25 +64,29 @@ export default function ModifierArticleService(){
         }
           
       }
+
     return<>
     <ModifierProduit
+        setPrixVenteArticleTTC={setPrixVenteArticleTTC}
+        setRefARticle={setRefARticle}
+        setImage={setImage}
+        setDescription={setDescription}
+        setstock={setstock}
+        setDesignation={setDesignation}
+        handleSubmitUpdate={handleSubmitUpdate}
         IdArticle={IdArticle}
         Designation={Designation}
         PrixVenteArticleTTC={PrixVenteArticleTTC}
         RefArticle={RefArticle}
         image={image}
         Description={Description}
-        stock={stock} Unite={""} setDesignation={function (value: SetStateAction<string>): void {
+        stock={stock} Unite={""} setNomClient={function (value: SetStateAction<string>): void {
           throw new Error("Function not implemented.");
-        } } setPrixVenteArticleTTC={function (value: SetStateAction<string>): void {
+        } } setAdresse={function (value: SetStateAction<string>): void {
           throw new Error("Function not implemented.");
-        } } setDescription={function (value: SetStateAction<string>): void {
+        } } setTotalCommandeHT={function (value: SetStateAction<string>): void {
           throw new Error("Function not implemented.");
-        } } setImage={function (value: SetStateAction<File | null>): void {
-          throw new Error("Function not implemented.");
-        } } setstock={function (value: SetStateAction<string>): void {
-          throw new Error("Function not implemented.");
-        } } setRefARticle={function (value: SetStateAction<string>): void {
+        } } setTotalRemise={function (value: SetStateAction<string>): void {
           throw new Error("Function not implemented.");
         } } setUnite={function (value: SetStateAction<string>): void {
           throw new Error("Function not implemented.");
@@ -86,10 +94,10 @@ export default function ModifierArticleService(){
           throw new Error("Function not implemented.");
         } } setprix_ht_3_magasin={function (value: SetStateAction<string>): void {
           throw new Error("Function not implemented.");
-        } } setprix_ttc_magasin={function (value: SetStateAction<string>): void {
+        } } setprix_ht_1_magasin={function (value: SetStateAction<string>): void {
           throw new Error("Function not implemented.");
         } } setquantité={function (value: SetStateAction<string>): void {
           throw new Error("Function not implemented.");
-        } }    />
+        } }   />
     </>
 }

@@ -54,6 +54,9 @@
     margin-right: 3%;
     
 }
+.produit-content{
+    width: 100%;
+}
 .profil img{
     width:2.5rem;
     border-radius: 50%;
@@ -71,7 +74,7 @@
     margin-left: 20%;
     border-radius: 10.417px;
     background: #FFF;
-    width:85%;
+    /* width:85%; */
 
 }
 .item-visiteur img{
@@ -79,6 +82,7 @@
     justify-content: center;
     display: flex;
     margin-top: 2%;
+    width: 100%;
     
 }
 .content-visiteure{
@@ -201,6 +205,7 @@
     border-radius: 0px 0px 10.417px 10.417px;
     background: #007ACC;
     padding: 2%; 
+    width: 100%;
 }
 .box-visiteur p{
     color: #FFF;
@@ -224,6 +229,7 @@
 }
 .name-produit-visiteur{
     padding-bottom: 2%;
+    width: 100%;
 }
 .name-produit-visiteur p{
     margin-top: 2%;
@@ -261,7 +267,7 @@
     margin-left: 50%;
 }
 .brand img{
-    width: 27%;
+    width: 100%;
     margin-left: 2%;
 }
 .magasins{

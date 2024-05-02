@@ -4,6 +4,13 @@ import "../categories/ajouterProduit.css"
 import { ArticleInfo } from "../../../Modeles/ArticleModel"
 
 const ModifierProduit:React.FC<ArticleInfo> = ({
+          setDesignation,
+          setRefARticle,
+          setImage,
+          setDescription,
+          setPrixVenteArticleTTC,
+          setstock,
+          handleSubmitUpdate,
           Designation,
           PrixVenteArticleTTC,
           Description,
@@ -12,14 +19,17 @@ const ModifierProduit:React.FC<ArticleInfo> = ({
           stock,
           RefArticle,
     }) => {
+      const handleGoBack = () => {
+        window.history.back();
+    };
       return (
       <>
       <Sidebare/>
       <div className="container mt-5">
-  <form action="" method="post">
+  <form action="" onSubmit={handleSubmitUpdate}>
       <div className="barRetour">
         <span className="iconRetour">
-          <Link to={`/articles/${IdArticle}`}><i className="bi bi-arrow-left-short"></i></Link>
+          <Link to={``} onClick={handleGoBack}><i className="bi bi-arrow-left-short"></i></Link>
         </span>
     </div>
   <div className="marque">
@@ -30,12 +40,12 @@ const ModifierProduit:React.FC<ArticleInfo> = ({
     <div className="col inputs">
       <div className="col-6">
           <span>Nom de produit</span>
-      <input type="text" className="form-control mb-3" defaultValue={Designation} id="nom" />
+      <input type="text" onChange={(e)=>setDesignation(e.target.value)} className="form-control mb-3" defaultValue={Designation} id="nom" />
     </div>
     <div className="col-9 form-floating">
     <span className="spandesc">Description</span>
   
-    <textarea  className="form-control" value={Description} id="floatingTextarea2" style={{height: 100}} defaultValue={""} />
+    <textarea onChange={(e)=>setDescription(e.target.value)}  className="form-control" value={Description} id="floatingTextarea2" style={{height: 100}} defaultValue={""} />
     <span className="nwrite">0/1000</span>
   
   </div>
@@ -48,7 +58,7 @@ const ModifierProduit:React.FC<ArticleInfo> = ({
     <div className="col">
     <span className="">Qunatité </span>
   
-      <input defaultValue={stock}  type="text" className="form-control"  />
+      <input defaultValue={stock} onChange={(e)=>setstock(e.target.value)}  type="text" className="form-control"  />
     </div>
   
     <div className="col">
@@ -78,7 +88,7 @@ const ModifierProduit:React.FC<ArticleInfo> = ({
     <div className="col">
     <span className="">Prix </span>
   
-      <input defaultValue={PrixVenteArticleTTC} name="PrixVenteArticleTTC" />
+      <input onChange={(e)=>setPrixVenteArticleTTC(e.target.value)} defaultValue={PrixVenteArticleTTC} name="PrixVenteArticleTTC" />
     </div>
   
     <div className="col">

@@ -9,6 +9,7 @@ import { ArticleInfo } from "../../../Modeles/ArticleModel";
 import { useContext, useEffect, useState } from "react";
 import AfficheProductsService from "../../../Services/Admin/AfficheProductsService";
 import { MagasinContext } from "../../../Context/MagasinContext";
+import AfficheArticleInMagasin from "../../../Services/Magasin/AfficheArticleInMagasin";
 
 export interface ProductType{
 
@@ -19,6 +20,7 @@ export interface ProductType{
   export default function ProduitMagasin(){
     const magasinContext = useContext(MagasinContext);
     const MagasinId = localStorage.getItem('MagasinId');
+
       const id = MagasinId || magasinContext.id?.id;
     const [search , setSearche] = useState("");
     const [state , setState] = useState<ProductType>({
@@ -31,7 +33,7 @@ export interface ProductType{
   }
   useEffect(()=>{
       setState({...state })
-          AfficheProductsService().getProduct()
+      AfficheArticleInMagasin().getArticle( )
           .then((res)=>setState({...state  , product:res.data})
           )
           .catch(msg=>setState({...state  , product:msg.messageErros}))
@@ -54,15 +56,28 @@ export interface ProductType{
     </div>
   </div>
     <div className="container">
-    {product.length > 0 ? 
-  product.filter((pro) => {
-    return search.toLowerCase() === "" || 
-    pro.Designation.toLowerCase().includes(search.toLowerCase());
-  }).length > 0 ? (
-    product.filter((pro) => {
-      return search.toLowerCase() === "" || 
-      pro.Designation.toLowerCase().includes(search.toLowerCase());
-    }).map((pro) => (
+    {
+      product.length > 0 ? (
+        product.filter((pro) => {
+          const searchTerm = search.toLowerCase();
+          const designation = pro.Designation.toLowerCase();
+          const refArticle = pro.RefArticle.toString().toLowerCase();
+          const sub = pro.LibelleSubstitut?.toString().toLowerCase(); 
+          return searchTerm === "" || 
+            designation.includes(searchTerm) || 
+            refArticle.startsWith(searchTerm) ||
+            sub?.startsWith(searchTerm);
+        }).length > 0 ? (
+          product.filter((pro) => {
+            const searchTerm = search.toLowerCase();
+            const designation = pro.Designation.toLowerCase();
+            const refArticle = pro.RefArticle.toString().toLowerCase();
+            const sub = pro.LibelleSubstitut?.toString().toLowerCase(); 
+            return searchTerm === "" || 
+              designation.includes(searchTerm) || 
+              refArticle.startsWith(searchTerm)||
+              sub?.startsWith(searchTerm);
+          }).map((pro) => (
 
         <div className="itemPro">
 
@@ -70,7 +85,7 @@ export interface ProductType{
         <div className="iconPoint">
             <i className="bi bi-three-dots-vertical"></i>
             </div>
-            <Link className="txN" to="/magasins/:id/articles/:id">
+            <Link className="txN" to={`/magasins/${id}/articles/${pro.IdArticle}`}>
             <div className="contentMagasinP">
                 <div className="Itemimg">
                 <img src={ProductImage} alt="" /><br />
@@ -79,7 +94,7 @@ export interface ProductType{
                 <div className="infoPM">
 
                 <p>{pro.Designation}</p><br />
-                <span>+100 ventes </span>    
+                <span>+1000 ventes </span>    
                 </div>
             </div>
             <div className="btnVP">
@@ -92,12 +107,13 @@ export interface ProductType{
      ))
      ) : (
       <div className="no-produit">
-      <i className="bi bi-emoji-neutral"></i><br />
-      <p>Malheureusement, on n‘a pas ce produit pour l’instant.</p><br />
-      <Link to={"/magasins/demande"} className="botton-remplir"><button>Remplir une demande</button></Link>
-    </div>     )
-     :
-     (<div className="no-produit"><i className="bi bi-info-lg"></i> Accune product</div>)
+        <i className="bi bi-emoji-neutral"></i><br />
+        <p>Malheureusement, on n‘a pas ce produit pour l’instant.</p><br />
+        <Link to={"https://api.whatsapp.com/send?phone=212661718081"} target="_blank" className="botton-remplir"><button><i className="bi bi-whatsapp"></i>Contactez-nous</button></Link>
+      </div>  
+    )
+    ) : (
+     <div className="no-produit"><i className="bi bi-info-lg"></i> Accune product</div>)
    }
         
         

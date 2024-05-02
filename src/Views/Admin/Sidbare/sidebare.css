@@ -790,6 +790,18 @@ a{
 .Box-info-product .parant-name span{
     color: rgb(76, 67, 67);
 }
+.icon-assi {
+	color: #494949;
+	font-size: 2.3rem;
+	position: fixed;
+	bottom: 2%; /* Adjust this value to change the distance from the bottom */
+	right: 3%; /* Adjust this value to change the distance from the right */
+	padding: 10px; /* Padding around the icon */
+	border-radius: 50%; /* Make the icon round */
+	z-index: 999; /* Ensure the icon is above other elements */
+	/* Additional styling as needed */
+  }
+  
 .Box-info-product .price p{
     color: rgb(255, 255, 255);
     font-size: 0.8rem;
@@ -811,7 +823,19 @@ a{
 
 
 }
+.magasin-qantity .zen-part{
+	padding: 0.5%;
+	background-color: #9ea6ff;
+	color: #474747;
+	border-radius: 10%;
+	border: 0.2px solid rgb(165, 159, 191);
+	font-family: Montserrat; 
+}
+.magasin-qantity .zen-part span{
+	color: #000;
+	font-family: Montserrat; 
 
+}
 @media screen and (max-width: 38rem) {
 
 	.home{

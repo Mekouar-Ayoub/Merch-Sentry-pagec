@@ -13,6 +13,9 @@ const AfficheProduitMagasin:React.FC<ArticleInfo> = ({
     quantité,
     RefArticle,
     LibelleSubstitut,
+    prix_ht_2_magasin,
+    prix_ht_3_magasin,
+    prix_ht_1_magasin,
 
 }) => {
     const handleGoBack = () => {
@@ -30,9 +33,16 @@ const AfficheProduitMagasin:React.FC<ArticleInfo> = ({
     <div className="cardItem mt-5">
         <img src={produit} alt="" />
     <div className="ItemsInfo">
-        <h2 className="mb-5">{PrixVenteArticleTTC} MAD</h2>
+        <h2 className="mb-5">Ttc : {PrixVenteArticleTTC} MAD</h2>
+        <div className="3prix mb-5">
+            <h6>prix_ht_1 : <span>{prix_ht_1_magasin}</span></h6>
+            <h6>prix_ht_2 : <span>{prix_ht_2_magasin}</span></h6>
+            <h6>prix_ht_3 :<span>{prix_ht_3_magasin}</span></h6>
+            <h5>Substitut : <span>{LibelleSubstitut ? LibelleSubstitut :"N/A"}</span></h5>
+
+        </div>
         <div className="quantity">
-        <h6>Quantité <input className="inputQ" value={quantité} type="number" min={1}/> </h6>
+        <h6>Quantité <input className="inputQ" value={quantité} type="text" min={1}/> </h6>
             </div>
         <button className="ajouterP">Ajouter au panier</button>
     </div>

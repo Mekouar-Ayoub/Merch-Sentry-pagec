@@ -13,6 +13,12 @@ export default function AfficheArticleById(){
     const [Description,setDescription] = useState<string>("");
     const [quantité,setQuantité] = useState<number>(0);
     const [LibelleSubstitut,setLibelle] = useState<string>("")
+    const [prix2,setPrix2] = useState<string>("")
+    const [prix3,setPrix3] = useState<string>("")
+    const [prix1,setPrix1] = useState<string>("")
+    const [prixTtc,setPrixTtc] = useState<string>("")
+
+
     const MagasinId = localStorage.getItem('MagasinId');  
     const {id}= useParams();    
     useEffect(()=>{
@@ -24,14 +30,19 @@ export default function AfficheArticleById(){
           await axios.get(url)
           .then(({data})=>{
             data.map((article:any)=>{
-
+              setLibelle(article.Libellsubstitut);
+              setPrix2(article.Prix2);
+              setPrix3(article.Prix3);
+              setPrix1(article.Prix1)
+              setPrixTtc(article.PrixTtc);
               setDesignation(article.Designation);
               setIdArticle(article.IdArticle);
               setDescription(article.Description);
               setimage(article.image);
               setPrixVenteArticleTTC(article.PrixVenteArticleTTC);
               setRefArticle(article.RefArticle);
-              setQuantité(article.quantité);            
+              setQuantité(article.quantité); 
+                
             })
 
         })} catch (error: AxiosError | any) {
@@ -55,6 +66,9 @@ export default function AfficheArticleById(){
           image={image}
           Description={Description}
           quantité={quantité}
+          prix_ht_2_magasin={prix2}
+          prix_ht_3_magasin={prix3}
+          prix_ht_1_magasin={prix1}
           Unite={""} setDesignation={function (value: SetStateAction<string>): void {
             throw new Error("Function not implemented.");
           } } setPrixVenteArticleTTC={function (value: SetStateAction<string>): void {
@@ -75,9 +89,17 @@ export default function AfficheArticleById(){
             throw new Error("Function not implemented.");
           } } setprix_ht_3_magasin={function (value: SetStateAction<string>): void {
             throw new Error("Function not implemented.");
-          } } setprix_ttc_magasin={function (value: SetStateAction<string>): void {
+          } } setprix_ht_1_magasin={function (value: SetStateAction<string>): void {
             throw new Error("Function not implemented.");
           } } setquantité={function (value: SetStateAction<string>): void {
+            throw new Error("Function not implemented.");
+          } } setNomClient={function (value: SetStateAction<string>): void {
+            throw new Error("Function not implemented.");
+          } } setAdresse={function (value: SetStateAction<string>): void {
+            throw new Error("Function not implemented.");
+          } } setTotalCommandeHT={function (value: SetStateAction<string>): void {
+            throw new Error("Function not implemented.");
+          } } setTotalRemise={function (value: SetStateAction<string>): void {
             throw new Error("Function not implemented.");
           } }        />
 </>
