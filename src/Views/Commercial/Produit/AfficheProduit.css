@@ -2,7 +2,8 @@
     display: flex;
 }
 .allproductCommercial{
-    margin-left: 100px;
+    margin-left: 12%;
+    margin-top: -7%;
 }
 .formcommercial{
     width: 100%;
@@ -114,6 +115,12 @@
     font-weight: 600;
     font-size: 1rem;
 
+}
+.formallp{
+    margin-left: -5%;
+    margin-top: 10%;
+    width: 125%;
+    justify-content: center;
 }
 .gotoshow{
     text-decoration: none;

@@ -114,7 +114,7 @@ const {product , messageErros} = state
   
   <div className="mt-3 container-fluid ProductSlide">
     <p className="container pMagazin mt-3">Vous avez +20 magasins</p>
-    <a className="right-align" href="#">Voir Plus <i className="bi bi-arrow-right-short" /></a>
+    <Link to={"/articles"}><a className="right-align" href="#">Voir Plus <i className="bi bi-arrow-right-short" /></a></Link>
     <Swiper
       
       freeMode={true}

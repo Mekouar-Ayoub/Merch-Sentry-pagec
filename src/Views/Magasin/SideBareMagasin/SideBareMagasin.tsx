@@ -38,15 +38,15 @@ export default function SideBareMagasin(){
   </a>
   <img id="logoMagasin" src={logomagasine}  />			
   <ul id = "side" className="sidee-menu top">
-    <li className={activeItem === `/magasins/${id}` || activeItem===`/magasins/${id}/articles` || activeItem===`/magasins/${id}/panier` || activeItem==="/affiche-article" || activeItem==="/magasins/id/panier" || activeItem && /^\/magasins\/\d+\/articles\/\d+$/.test(activeItem)? "active" : "" }>
+    <li className={activeItem === `/magasins/${id}` || activeItem===`/magasins/${id}/panier` || activeItem==="/affiche-article" || activeItem==="/magasins/id/panier" || activeItem && /^\/magasins\/\d+\/articles\/\d+$/.test(activeItem)? "active" : "" }>
         <Link to={`/magasins/${id}`} className="active">
       <a href="#">
         <i className="bi bi-menu-button-wide-fill" />
       </a>
       </Link>
     </li>
-    <li className={activeItem === `/magasins/${id}/articles/voire`|| activeItem ==="/message/article" || activeItem==="/magasins/:id/articles/:id" || activeItem===`/magasins/${id}/articles/add` ? "active" : "" }>
-    <Link to={`/magasins/${id}/articles/voire`}>
+    <li className={activeItem === `/magasins/${id}/articles`|| activeItem ==="/message/article" || activeItem==="/magasins/:id/articles/:id" || activeItem===`/magasins/${id}/articles/add` ? "active" : "" }>
+    <Link to={`/magasins/${id}/articles`}>
 
       <a href="#">
         <i className="bi bi-box-seam" />

@@ -167,7 +167,7 @@ product.length > 0 ? (
   </div>
   <div className="mt-3 container-fluid" id="ProductSlide">
     <p className="pMagazin container mt-3">Lubrifiants</p>
-    <a className="right-align" href="#">Voir Plus <i className="bi bi-arrow-right-short" /></a>
+    <Link to={`/magasins/${id}/articles`}><a className="right-align" href="#">Voir Plus <i className="bi bi-arrow-right-short" /></a></Link>
     <Swiper
       
       freeMode={true}

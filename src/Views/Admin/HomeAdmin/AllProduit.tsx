@@ -18,9 +18,7 @@ export interface ProductType{
       messageErros : "accune produit",
   
   })
-  const handleGoBack = () => {
-    window.history.back();
-};
+
   const [stateMagasin , setStateMagasin] = useState<ProductType>({
     product:[] as ArticleInfo[],
     messageErros : "accune produit",
@@ -44,13 +42,18 @@ const {product , messageErros} = state
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <div className="allproductCommercial">
             <br />
-        <i onClick={handleGoBack} className="bi bi-arrow-left-short arrow"></i>
-
-        <div className="form formcommercial mt-3">
+            <div className="container mt-5">
+    <div className="row height ">
+      <div className="col-md-6">
+        <div className="form form-categorie formallp ">
           <i className="fa fa-search" />
-          <input type="text" onChange={handelSearche}  className="form-control form-input" placeholder="Recherch un produit , ref .." />
+          <input type="text" onChange={handelSearche} className="form-control form-input" placeholder="Recherchez un produit , ref .." />
           <span className="left-pan"><i className="bi bi-sliders"></i></span>
+          <Link to="/articles/categories/add"><button className="btnAjoutee">Ajouter Produit</button></Link>
         </div>
+      </div>
+    </div>
+  </div>
             <div className="row container mx-auto">
             {
 product.length > 0 ? (
@@ -100,10 +103,12 @@ product.length > 0 ? (
                 </div>
                ))
                ) : (
-           <div className="no-produit mt-5">
-             <i className="bi bi-emoji-neutral"></i><br />
-             <p>Malheureusement, on n‘a pas ce produit pour l’instant.</p><br />
-           </div>)
+                <div className="no-produit">
+                <i className="bi bi-emoji-neutral"></i><br />
+                <p>Malheureusement, on n‘a pas ce produit pour l’instant.</p><br />
+                <Link to={"https://api.whatsapp.com/send?phone=212661718081"} target="_blank" className="botton-remplir"><button><i className="bi bi-whatsapp"></i>Contactez-nous</button></Link>
+              </div>
+              )
  ) : (
          <div className="no-produit"><i className="bi bi-info-lg"></i>Accune product</div>
          )}

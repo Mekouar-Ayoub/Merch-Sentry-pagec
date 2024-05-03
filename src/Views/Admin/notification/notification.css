@@ -1,0 +1,25 @@
+.container .message{
+    display: flex;
+    justify-content: space-between;
+
+}
+.container .card{
+    padding: 20px;
+    border-radius: 7px;
+}
+.derection{
+    text-decoration: none;
+}
+.derection h5{
+    margin-left: 80px;
+    color: rgb(110, 110, 110);
+}
+.derection p{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 23px;
+}
+.derection i{
+    font-size: 30px;
+    color:#007ACC;
+    margin-right: 20px;
+}

@@ -97,8 +97,8 @@ root.render(
     
     <Route path='/magasins/:id' index element={<HomeMagasin/>}/>
     <Route path='/magasins/:id/articles/:id' index element={<AfficheArticleById />}/>
-    <Route path='/magasins/:id/articles/voire' index element={<ProduitMagasin/>}/>
-    <Route path='/magasins/:id/articles' index element={<AllProduitMagasin/>}/>
+    <Route path='/magasins/:id/articles' index element={<ProduitMagasin/>}/>
+    {/* <Route path='/magasins/:id/articles' index element={<AllProduitMagasin/>}/> */}
     <Route path='/magasins/:id/article/:id/edit' index element={<ChangeProduitMagasin/>}/>
     <Route path='/magasins/:id/panier' index element={<PanierMagasin/>}/>
     <Route path='/magasins/:id/commercials' index element={<Commercial/>}/>

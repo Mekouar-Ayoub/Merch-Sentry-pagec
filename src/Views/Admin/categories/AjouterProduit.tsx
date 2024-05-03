@@ -14,13 +14,16 @@ const AjouterProduit:React.FC<ArticleInfo> = ({
   messageError,
 
   }) => {
+    const handleGoBack = () => {
+      window.history.back();
+  };
     return (<>
     <Sidebare/>
     <div className="container mt-5">
 <form action="" method="post" onSubmit={handleSubmit} >
     <div className="barRetour">
       <span className="iconRetour">
-        <Link to="/articles/categories"><i className="bi bi-arrow-left-short"></i></Link>
+        <i onClick={handleGoBack} className="bi bi-arrow-left-short"></i>
         
       </span>
   </div>

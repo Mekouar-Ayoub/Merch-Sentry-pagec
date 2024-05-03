@@ -21,6 +21,7 @@ const CommandeMagasin:React.FC<ArticleInfo> = ({
     <SideBareMagasin/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"></link>
     <div className="container mt-5">
+      
     <form action="" onSubmit={handleSubmit}>
         <h3 className="title-commande">Bienvenue sur votre espace</h3>
         <div className="button-up mb-5">

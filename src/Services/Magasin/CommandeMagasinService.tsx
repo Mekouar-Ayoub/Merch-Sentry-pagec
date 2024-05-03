@@ -245,12 +245,18 @@ const UpdateCommande = (id: number) => {
       </Page>
     </Document>
   );
-
+  const handleGoBack = () => {
+    window.history.back();
+};
   return (
     <>
     <SideBareMagasin/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"></link>
     <div className="container mt-5">
+    <span className="iconRetour">
+        <i onClick={handleGoBack} className="bi bi-arrow-left-short"></i>
+        
+      </span>
     <form action="" onSubmit={handleSubmit}>
 
         <h3 className="title-commande">Bienvenue sur votre espace</h3>

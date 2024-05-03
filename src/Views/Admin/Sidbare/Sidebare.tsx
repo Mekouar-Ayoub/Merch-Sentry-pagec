@@ -38,15 +38,15 @@ export default function Sidebare() {
           </a>
           <br />
           <ul className="side-menu top">
-            <li className={activeItem === "/home" || activeItem === "/articles" || activeItem && /^\/articles\/\d+$/.test(activeItem) ||activeItem && /^\/articles\/\d+\/edit$/.test(activeItem)? "active" : "" }>
+            <li className={activeItem === "/home"|| activeItem && /^\/articles\/\d+$/.test(activeItem) ||activeItem && /^\/articles\/\d+\/edit$/.test(activeItem)? "active" : "" }>
               <Link className="active" to="/home">
                 <a href="#">
                   <i className="bi bi-menu-button-wide-fill" />
                 </a>
               </Link>
             </li>
-            <li className={activeItem === "/articles/categories" ?  "active"  : "" || activeItem==="/message" || activeItem === "/articles/categories/add" ?  "active"  : ""}>
-              <Link to="/articles/categories">
+            <li className={activeItem === "/articles" ?  "active"  : "" || activeItem==="/message" || activeItem === "/articles/categories/add" ?  "active"  : ""}>
+              <Link to="/articles">
                 <a href="#">
                   <i className="bi bi-box-seam" />
                 </a>
